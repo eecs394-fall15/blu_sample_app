@@ -33,6 +33,10 @@ module.exports =
       id: "using-the-scanner"
       location: "example#using-the-scanner"
     }
+    {
+      id: "settings"
+      location: "example#settings"
+    }
   ]
 
   # drawers:
