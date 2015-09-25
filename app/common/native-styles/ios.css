@@ -4,7 +4,7 @@
  ***********************************************************/
 
 navigation-bar {
-  background-color: #00B5FF;
+  background-color: #6FA8DC;
   color: #ffffff;
 }
 
@@ -17,6 +17,11 @@ navigation-bar title {
 navigation-bar button, navigation-bar back-bar-button {
   color: #ffffff;
   font-weight: 300;
+}
+
+super-navigate {
+  background-color: #000000;
+  color: #000000;
 }
 
 tab-bar {
@@ -34,7 +39,7 @@ tab-bar tab-bar-item:selected {
   color: #1596f7;
 }
 
-tab-bar-item#geolocation {
+tab-bar-item#settings {
   background-image: url(icons/cog.svg);
 }
 

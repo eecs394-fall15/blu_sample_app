@@ -1,0 +1,30 @@
+<super-navbar ng-controller="NewCardController">
+  <super-navbar-title>
+    New Card
+  </super-navbar-title>
+  <super-navbar-button side="right" ng-click="AddTapped()">
+  	Add
+  </super-navbar-button>
+</super-navbar>
+
+<div id="camera" ng-controller="NewCardController">
+  <img src="/images/camera.jpg" ng-click="CameraTapped()">
+</div>
+
+<div class="list list-inset" ng-controller="NewCardController">
+  <label class="item item-input">
+    <input type="text" placeholder="Name">
+  </label>
+  <label class="item item-input">
+    <input type="text" placeholder="Company">
+  </label>
+  <label class="item item-input">
+    <input type="text" placeholder="Email">
+  </label>
+  <label class="item item-input">
+    <input type="text" placeholder="Tags (comma separated)">
+  </label>
+  <button class="button button-large button-positive" id="submitButton" ng-click="AddTapped()">
+    Add
+  </button>
+</div>
