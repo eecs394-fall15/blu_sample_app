@@ -3,3 +3,5 @@ angular.module('example', [
   'supersonic'
 ]);
 
+supersonic.ui.tabs.hide();
+

@@ -37,6 +37,10 @@ module.exports =
       id: "settings"
       location: "example#settings"
     }
+    {
+      id: "new-card"
+      location: "example#new-card"
+    }
   ]
 
   # drawers:

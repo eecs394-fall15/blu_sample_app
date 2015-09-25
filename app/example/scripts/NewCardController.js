@@ -10,4 +10,15 @@ angular
     	alert("test");
     };
 
+	var options = {
+	  targetHeight: 300,
+	  encodingType: "png",
+	};
+
+	$scope.newCard = function() {
+	  supersonic.media.camera.takePicture(options).then( function(result){
+	    $scope.image = result
+	  });
+	};
+
   });
