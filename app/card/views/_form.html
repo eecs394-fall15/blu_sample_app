@@ -1,0 +1,41 @@
+<div id="camera" ng-controller="NewController">
+  <img src="/images/camera.jpg" ng-click="CameraTapped()">
+</div>
+
+
+<div class="list list-inset">
+
+  
+  <label class="item item-input" name="nameLabel">
+    <span class="input-label">name</span>
+    <input type="text" ng-model="card['name']" placeholder="Name">
+  </label>
+  
+  <label class="item item-input">
+    <span class="input-label">company</span>
+    <input type="text" ng-model="card['company']" placeholder="Company">
+  </label>
+  
+  <label class="item item-input">
+    <span class="input-label">email</span>
+    <input type="text" ng-model="card['email']" placeholder="Email">
+  </label>
+  
+<!--
+  <label class="item item-input">
+    <span class="input-label">dateId</span>
+    <input type="text" ng-model="card['dateId']" placeholder="Name">
+  </label>
+-->
+  
+  <label class="item item-input">
+    <span class="input-label">tags</span>
+    <input type="text" ng-model="card['tags']" placeholder="Tags">
+  </label>
+  
+
+  <br>
+
+  <button class="button button-block button-positive">Save</button>
+
+</div>

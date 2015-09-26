@@ -7,7 +7,7 @@ module.exports =
     {
       title: "Index"
       id: "index"
-      location: "example#getting-started" # Supersonic module#view type navigation
+      location: "card#index" # Supersonic module#view type navigation
     }
     {
       title: "Geolocation"
@@ -36,10 +36,6 @@ module.exports =
     {
       id: "settings"
       location: "example#settings"
-    }
-    {
-      id: "new-card"
-      location: "example#new-card"
     }
   ]
 

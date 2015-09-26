@@ -1,0 +1,39 @@
+<div ng-controller="IndexController">
+  <super-navbar>
+    <super-navbar-title>
+      Card Index
+    </super-navbar-title>
+  </super-navbar>
+
+  <div id="new-card">
+    <super-modal-show location="card#new">
+      <button class="button button-outline button-large button-positive">
+        new card
+      </button>
+    </super-modal-show>
+  </div>
+
+  <div id="my-cards">
+    my cards
+  </div>
+
+  <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
+  <div ng-hide="showSpinner">
+    <ul class="list" ng-hide="cards.length == 0">
+
+      <super-navigate location="card#show" data-params-id="{{ card.id }}" ng-repeat="card in cards">
+        <li class="item item-thumbnail-left">
+          <img src={{ReferencePath(card['name'])}}>
+          <h2 ng-bind="card['name']"></h2>
+          <p ng-bind="card['company']"></p>
+          <p ng-bind="card['email']"></p>
+        </li>
+      </super-navigate>
+
+    </ul>
+
+    <h4 ng-show="cards.length == 0" class="assertive padding">
+      No cards found. Create one?
+    </h4>
+  </div>
+</div>
