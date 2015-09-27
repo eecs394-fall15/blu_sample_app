@@ -1,5 +1,5 @@
-<div id="camera" ng-controller="NewController">
-  <img src="/images/camera.jpg" ng-click="CameraTapped()">
+<div id="camera">
+  <img src={{GetImageFromName(card['name'])}} ng-click="CameraTapped()">
 </div>
 
 

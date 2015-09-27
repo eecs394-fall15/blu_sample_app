@@ -11,12 +11,15 @@ angular
         });
     });
 
-    $scope.RemoveSpaces = function(str) {
-      return str.replace(/\s+/g, '');
+    $scope.GetImageFromName = function(name) {
+      var path = ReferencePath(name);
+
+      var http = new XMLHttpRequest();
+      http.open('HEAD', path, false);
+      http.send();
+      
+      return http.status==404 ? ReferencePath("default") : path;
+
     };
 
-    $scope.ReferencePath = function(name) {
-      return "/images/" + $scope.RemoveSpaces(name) + ".jpg";
-    };
-    
   });

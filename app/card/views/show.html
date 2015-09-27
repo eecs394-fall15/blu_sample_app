@@ -5,6 +5,10 @@
     </super-navbar-title>
   </super-navbar>
 
+  <div id="camera">
+    <img src={{GetImageFromName(card['name'])}}>
+  </div>
+
   <div class="padding">
     <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
     <div ng-hide="showSpinner">

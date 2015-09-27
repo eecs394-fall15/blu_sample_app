@@ -31,4 +31,15 @@ angular
         supersonic.ui.layers.pop();
       });
     }
+
+    $scope.GetImageFromName = function(name) {
+      var path = ReferencePath(name);
+
+      var http = new XMLHttpRequest();
+      http.open('HEAD', path, false);
+      http.send();
+      
+      return http.status==404 ? ReferencePath("default") : path;
+
+    };
   });
