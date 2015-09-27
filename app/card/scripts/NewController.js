@@ -45,8 +45,12 @@ angular
       supersonic.ui.modal.hide();
     };
 
+    var cameraOptions = {
+      quality: 90
+    };
+
     $scope.CameraTapped = function() {
-      supersonic.media.camera.takePicture(options).then( function(result){
+      supersonic.media.camera.takePicture(cameraOptions).then( function(result){
         $scope.image = result
       })
     };
