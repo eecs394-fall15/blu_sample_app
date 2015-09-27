@@ -1,0 +1,42 @@
+<div ng-controller="ShowController">
+  <super-navbar>
+    <super-navbar-title>
+      Show
+    </super-navbar-title>
+  </super-navbar>
+
+  <div id="camera">
+    <img src={{GetImageFromName(card['name'])}}>
+  </div>
+
+  <div class="padding">
+    <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
+    <div ng-hide="showSpinner">
+      <h2 ng-bind="card['name']"></h2>
+      
+      
+      
+       <p>company: <span ng-bind="card['company']"></span></p> 
+      
+       <p>email: <span ng-bind="card['email']"></span></p> 
+      
+      <!--
+       <p>dateId: <span ng-bind="card['dateId']"></span></p> 
+     -->
+      
+       <p>tags: <span ng-bind="card['tags']"></span></p> 
+      
+
+
+      <super-modal-show location="card#edit?id={{ card.id }}">
+        <button class="button button-block button-positive">
+          Edit
+        </button>
+      </super-modal-show>
+
+      <button ng-click="remove(card.id)" class="button button-block button-negative">
+        Remove
+      </button>
+    </div>
+  </div>
+</div>
