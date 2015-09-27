@@ -16,8 +16,8 @@ traits:
             default: 80046
   
 schemas:
-  - Card_collection: '{"$schema":"http://json-schema.org/schema","title":"Card collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Card representation","properties":{"name":{"type":"string"},"company":{"type":"string"},"email":{"type":"string"},"dateId":{"type":"string"},"tags":{"type":"string"}},"required":[]}}}}'
-  - Card_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Card representation","properties":{"object":{"type":"object","properties":{"name":{"type":"string"},"company":{"type":"string"},"email":{"type":"string"},"dateId":{"type":"string"},"tags":{"type":"string"}},"required":[]}}}'
+  - Card_collection: '{"$schema":"http://json-schema.org/schema","title":"Card collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Card representation","properties":{"name":{"type":"string"},"company":{"type":"string"},"email":{"type":"string"},"dateId":{"type":"string"},"tags":{"type":"string"},"id":{"type":"string"}},"required":[]}}}}'
+  - Card_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Card representation","properties":{"object":{"type":"object","properties":{"name":{"type":"string"},"company":{"type":"string"},"email":{"type":"string"},"dateId":{"type":"string"},"tags":{"type":"string"},"id":{"type":"string"}},"required":[]}}}'
 
 resourceTypes:
   - dolan_db_collection:

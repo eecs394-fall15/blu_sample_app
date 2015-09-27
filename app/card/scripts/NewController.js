@@ -32,6 +32,7 @@ angular
         }
 
         // If no problems were encountered, save new card.
+        newcard.dateId = GetDateId();
         newcard.save().then( function () {
           supersonic.ui.modal.hide();
         });
