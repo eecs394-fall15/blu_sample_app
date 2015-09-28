@@ -10,5 +10,8 @@
   </super-navbar>
 
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
+  <div id="camera">
+    <img id="cardImage" src="{{card['tags']}}" title="Add Card Image" ng-click="CameraTapped()">
+  </div>
   <form ng-hide="showSpinner" ng-submit="submitForm()" ng-include="'_form.html'"></form>
 </div>

@@ -6,7 +6,6 @@ angular
     $scope.submitForm = function () {
       $scope.showSpinner = true;
       newcard = new Card($scope.card);
-
       var Cards = supersonic.data.model("Card");
       Cards.findAll().then( function(allCards) {
 
@@ -46,24 +45,31 @@ angular
     };
 
     var cameraOptions = {
-      quality: 90
+      destinationType: "dataURL",
+      quality: 40,
+      targetWidth: 300,
+      targetHeight: 300
     };
 
     $scope.CameraTapped = function() {
       supersonic.media.camera.takePicture(cameraOptions).then( function(result){
-        $scope.image = result
+        //save image dataURL into tags (for now)
+        $scope.card.tags = "data:image/jpeg;base64," + result;
+        //change the image on the new.html to the one taken
+        var image = document.getElementById('cardImage');
+        image.src = "data:image/jpeg;base64," + result;
       })
     };
 
-    $scope.GetImageFromName = function(name) {
-      var path = ReferencePath(name);
+    // $scope.GetImageFromName = function(name) {
+    //   var path = ReferencePath(name);
 
-      var http = new XMLHttpRequest();
-      http.open('HEAD', path, false);
-      http.send();
+    //   var http = new XMLHttpRequest();
+    //   http.open('HEAD', path, false);
+    //   http.send();
       
-      return http.status==404 ? ReferencePath("camera") : path;
+    //   return http.status==404 ? ReferencePath("camera") : path;
 
-    };
+    // };
     
 });
