@@ -61,15 +61,15 @@ angular
       })
     };
 
-    $scope.GetImageFromName = function(name) {
-      var path = ReferencePath(name);
+    // $scope.GetImageFromName = function(name) {
+    //   var path = ReferencePath(name);
 
-      var http = new XMLHttpRequest();
-      http.open('HEAD', path, false);
-      http.send();
+    //   var http = new XMLHttpRequest();
+    //   http.open('HEAD', path, false);
+    //   http.send();
       
-      return http.status==404 ? ReferencePath("camera") : path;
+    //   return http.status==404 ? ReferencePath("camera") : path;
 
-    };
+    // };
     
 });
