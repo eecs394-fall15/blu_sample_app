@@ -23,7 +23,7 @@
 
       <super-navigate location="card#show" data-params-id="{{ card.id }}" ng-repeat="card in cards">
         <li class="item item-thumbnail-left">
-          <img src={{GetImageFromName(card['id'])}}>
+          <img src="{{card['tags'}}">
           <h2 ng-bind="card['name']"></h2>
           <p ng-bind="card['company']"></p>
           <p ng-bind="card['email']"></p>
