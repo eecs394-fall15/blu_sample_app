@@ -46,7 +46,7 @@ angular
 
     var cameraOptions = {
       destinationType: "dataURL",
-      quality: 30,
+      quality: 40,
       targetWidth: 300,
       targetHeight: 300
     };
