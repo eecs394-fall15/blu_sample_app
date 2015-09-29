@@ -53,8 +53,8 @@ angular
 
     $scope.CameraTapped = function() {
       supersonic.media.camera.takePicture(cameraOptions).then( function(result){
-        //save image dataURL into tags (for now)
-        $scope.card.tags = "data:image/jpeg;base64," + result;
+        //save image dataURL into dataURL
+        $scope.card.dataURL = "data:image/jpeg;base64," + result;
         //change the image on the new.html to the one taken
         var image = document.getElementById('cardImage');
         image.src = "data:image/jpeg;base64," + result;

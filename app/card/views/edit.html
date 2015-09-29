@@ -1,4 +1,3 @@
-
 <div ng-controller="EditController">
   <super-navbar>
     <super-navbar-button ng-click="cancel()">
@@ -11,7 +10,7 @@
 
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div id="camera">
-    <img id="cardImage" src="{{card['tags']}}" title="Add Card Image" ng-click="CameraTapped()">
+    <img id="cardImage" src="{{GetImageFromName(card['dataURL'], 'camera')}}" title="Add Card Image" ng-click="CameraTapped()">
   </div>
   <form ng-hide="showSpinner" ng-submit="submitForm()" ng-include="'_form.html'"></form>
 </div>

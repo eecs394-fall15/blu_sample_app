@@ -3,8 +3,10 @@ angular.module('card', [
   'common'
 ]);
 
-function ReferencePath(name) {
-  return "/images/" + name + ".jpg";
+supersonic.ui.tabs.hide();
+
+function ReferencePath(name, image) {
+  return name == undefined ? "/images/" + image + ".jpg" : name;
 }
 
 function GetDateId() {
