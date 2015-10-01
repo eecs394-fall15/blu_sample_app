@@ -13,4 +13,35 @@
     <img id="cardImage" src="/images/camera.jpg" ng-click="CameraTapped()">
   </div>
   <!-- <form ng-hide="showSpinner" ng-submit="submitForm()" ng-include="'_form.html'"></form> -->
+
+  <div class="list list-inset">
+
+  
+  <label class="item item-input" id="nameLabel">
+    <span class="input-label">name</span>
+    <input type="text" placeholder="Name" id="name">
+  </label>
+  
+  <label class="item item-input">
+    <span class="input-label">company</span>
+    <input type="text" placeholder="Company" id="company">
+  </label>
+  
+  <label class="item item-input">
+    <span class="input-label">email</span>
+    <input type="text" placeholder="Email" id="email">
+  </label>
+  
+  <label class="item item-input">
+    <span class="input-label">tags</span>
+    <input type="text" placeholder="Tags" id="tags">
+  </label>
+  
+
+  <br>
+
+  <button class="button button-block button-positive" ng-click="SaveTapped()">Save</button>
+
+  </div>
+
 </div>

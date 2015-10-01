@@ -38,13 +38,13 @@ function CreateListHeader(content) {
 //  <p>Sample Company</p>
 //  <p>Sample Email</p>
 // </a>
-function CreateListElement(name, company, email, imageData) {
+function CreateListElement(name, company, email, dataURL) {
   var anchor = document.createElement("a");
   anchor.setAttribute("class", "item item-thumbnail-left");
   anchor.href = "#";
 
   var image = document.createElement("img");
-  image.src = imageData ? imageData.url() : "/images/default.jpg";
+  image.src = dataURL || "/images/default.jpg";
 
   var h2Name = document.createElement("h2");
   h2Name.innerHTML = name;
@@ -72,7 +72,7 @@ function init() {
   query.find({
     success: function (results) {
         for (var i = 0; i < results.length; i++) {
-            list.appendChild(CreateListElement(results[i].get("name"), results[i].get("company"), results[i].get("email"), results[i].get("image")));
+            list.appendChild(CreateListElement(results[i].get("name"), results[i].get("company"), results[i].get("email"), results[i].get("dataURL")));
         }
     },
     error: function (error) {

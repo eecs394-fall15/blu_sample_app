@@ -20,4 +20,26 @@ angular
         image.src = "data:image/jpeg;base64," + result;
       })
     };
+
+    $scope.SaveTapped = function() {
+      var CardsObject = Parse.Object.extend("howzitData");
+      var card = new CardsObject();
+
+      card.save({
+        name: document.getElementById("name").value,
+        company: document.getElementById("company").value,
+        email: document.getElementById("email").value,
+        tags: document.getElementById("tags").value,
+        dataURL: document.getElementById("cardImage").src
+      }, {
+        success: function(card) {
+          // The object was saved successfully
+        },
+        error: function(card, error) {
+          alert("Error: " + error.code + " " + error.message);
+        }
+      });
+
+      supersonic.ui.modal.hide();
+    }
 });
