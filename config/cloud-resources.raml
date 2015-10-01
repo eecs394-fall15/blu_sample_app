@@ -18,6 +18,8 @@ traits:
 schemas:
   - Card_collection: '{"$schema":"http://json-schema.org/schema","title":"Card collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Card representation","properties":{"name":{"type":"string"},"company":{"type":"string"},"email":{"type":"string"},"dateId":{"type":"string"},"tags":{"type":"string"},"id":{"type":"string"},"dataURL":{"type":"string"}},"required":[]}}}}'
   - Card_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Card representation","properties":{"object":{"type":"object","properties":{"name":{"type":"string"},"company":{"type":"string"},"email":{"type":"string"},"dateId":{"type":"string"},"tags":{"type":"string"},"id":{"type":"string"},"dataURL":{"type":"string"}},"required":[]}}}'
+  - howzit_collection: '{"$schema":"http://json-schema.org/schema","title":"howzit collection","type":"object","properties":{"results":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical howzit representation","properties":{"company":{"type":"string"},"createdAt":{"type":"string"},"email":{"type":"string"},"name":{"type":"string"},"objectId":{"type":"string"},"tags":{"type":"string"},"updatedAt":{"type":"string"}},"required":[]}}}}'
+  - howzit_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical howzit representation","properties":{"company":{"type":"string"},"createdAt":{"type":"string"},"email":{"type":"string"},"name":{"type":"string"},"objectId":{"type":"string"},"tags":{"type":"string"},"updatedAt":{"type":"string"}},"required":[]}'
 
 resourceTypes:
   - dolan_db_collection:
@@ -99,6 +101,71 @@ resourceTypes:
         responses:
           200:
 
+  - parse_collection:
+      usage: This resourceType should be used for any collection of items
+      is: [ securedBySteroidsApiKey ]
+      get:
+        description: |
+          {
+            "action": "collection"
+          }
+        responses:
+          200:
+            description: |
+              {
+                "rootKey": "results"
+              }
+            body:
+              application/json:
+                schema: <<resourcePathName>>_collection # e.g cars
+      post:
+        description: |
+          {
+            "action": "create"
+          }
+        body:
+          application/json:
+            schema: <<resourcePathName>>_member
+        responses:
+          200:
+            body:
+              application/json:
+                schema: <<resourcePathName>>_member # e.g. car
+
+  - parse_member:
+      usage: This resourceType should be used for any parse item
+      is: [ securedBySteroidsApiKey ]
+      get:
+        description: |
+          {
+            "action": "find"
+          }
+        responses:
+          200:
+            body:
+              application/json:
+                schema: <<resourcePathName>>_member # e.g. car
+      put:
+        description: |
+          {
+            "action": "update"
+          }
+        body:
+          application/json:
+            schema: <<resourcePathName>>_member
+        responses:
+          200:
+            body:
+              application/json:
+                schema: <<resourcePathName>>_member
+      delete:
+        description: |
+          {
+            "action": "destroy"
+          }
+        responses:
+          200:
+
 
 /Card:
   description: |
@@ -109,5 +176,15 @@ resourceTypes:
   type: dolan_db_collection
   /{id}:
     type: dolan_db_member
+
+/howzit:
+  description: |
+    {
+      "resourceName": "howzit",
+      "identifierKey": "objectId"
+    }
+  type: parse_collection
+  /{id}:
+    type: parse_member
 
 

@@ -1,18 +1,10 @@
 angular
   .module('card')
-  .controller("IndexController", function ($scope, Card, supersonic) {
-    $scope.cards = null;
-    $scope.showSpinner = true;
+  .controller('IndexController', function($scope, supersonic) {
+  	$scope.cards = null;
+  	init();
 
-    Card.all().whenChanged( function (cards) {
-        $scope.$apply( function () {
-          $scope.cards = cards;
-          $scope.showSpinner = false;
-        });
-    });
-
-    $scope.GetImageFromName = function(name, image) {
-      return ReferencePath(name, image);
-    };
-
+  	$scope.init = function() {
+  		init();
+  	}
   });

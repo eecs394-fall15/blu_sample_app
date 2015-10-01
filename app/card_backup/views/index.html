@@ -17,9 +17,9 @@
     my cards
   </div>
 
-<!--   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
-  <div ng-hide="showSpinner"> -->
-    <ul class="list" id="list">
+  <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
+  <div ng-hide="showSpinner">
+    <ul class="list" ng-hide="cards.length == 0">
 
       <super-navigate location="card#show" data-params-id="{{ card.id }}" ng-repeat="card in cards">
         <li class="item item-thumbnail-left">
