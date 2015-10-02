@@ -1,10 +1,7 @@
 angular
-  .module('card')
-  .controller('IndexController', function($scope, supersonic) {
-  	$scope.cards = null;
-  	init();
+	.module('card')
+	.controller('IndexController', function($scope, supersonic) {
 
-  	$scope.init = function() {
-  		init();
-  	}
-  });
+		init();
+
+	});

@@ -22,6 +22,11 @@ function GetDateId() {
   return yyyy + mm + dd;
 }
 
+// Taken from http://stackoverflow.com/questions/11582512/how-to-get-url-parameters-with-javascript
+function getURLParameter(name) {
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+}
+
 // <div class="item item-divider">
 //   {{ content }}
 // </div>
@@ -32,16 +37,18 @@ function CreateListHeader(content) {
   return header;
 }
 
-// <a class="item item-thumbnail-left" href="#">
+// <a class="item item-thumbnail-left" href="#" id="Sample ObjectId">
 //  <img src="#">
 //  <h2>Sample Name</h2>
 //  <p>Sample Company</p>
 //  <p>Sample Email</p>
 // </a>
-function CreateListElement(name, company, email, dataURL) {
-  var anchor = document.createElement("a");
-  anchor.setAttribute("class", "item item-thumbnail-left");
-  anchor.href = "#";
+function CreateListElement(objectId, name, company, email, dataURL) {
+  var navigate = document.createElement("super-navigate");
+  navigate.setAttribute("location", "card#view?id=" + objectId);
+
+  var listElement = document.createElement("div");
+  listElement.setAttribute("class", "item item-thumbnail-left");
 
   var image = document.createElement("img");
   image.src = dataURL || "/images/default.jpg";
@@ -55,12 +62,13 @@ function CreateListElement(name, company, email, dataURL) {
   var pEmail = document.createElement("p");
   pEmail.innerHTML = email || "";
 
-  anchor.appendChild(image);
-  anchor.appendChild(h2Name);
-  anchor.appendChild(pName);
-  anchor.appendChild(pEmail);
+  listElement.appendChild(image);
+  listElement.appendChild(h2Name);
+  listElement.appendChild(pName);
+  listElement.appendChild(pEmail);
+  navigate.appendChild(listElement);
 
-  return anchor;
+  return navigate;
 }
 
 function init() {
@@ -72,7 +80,7 @@ function init() {
   query.find({
     success: function (results) {
         for (var i = 0; i < results.length; i++) {
-            list.appendChild(CreateListElement(results[i].get("name"), results[i].get("company"), results[i].get("email"), results[i].get("dataURL")));
+            list.appendChild(CreateListElement(results[i].id, results[i].get("name"), results[i].get("company"), results[i].get("email"), results[i].get("dataURL")));
         }
     },
     error: function (error) {

@@ -20,20 +20,8 @@
 <!--   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div ng-hide="showSpinner"> -->
     <ul class="list" id="list">
-
-      <super-navigate location="card#show" data-params-id="{{ card.id }}" ng-repeat="card in cards">
-        <li class="item item-thumbnail-left">
-          <img src="{{GetImageFromName(card['dataURL'], 'default')}}">
-          <h2 ng-bind="card['name']"></h2>
-          <p ng-bind="card['company']"></p>
-          <p ng-bind="card['email']"></p>
-        </li>
-      </super-navigate>
-
+      <!-- Filled out by JavaScript in index.js -->
     </ul>
 
-    <h4 ng-show="cards.length == 0" class="assertive padding">
-      No cards found. Create one?
-    </h4>
   </div>
 </div>

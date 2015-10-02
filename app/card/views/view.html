@@ -1,0 +1,27 @@
+<div ng-controller="ViewController">
+  <super-navbar>
+    <super-navbar-title>
+      New Card
+    </super-navbar-title>
+  </super-navbar>
+
+  <div id="camera">
+    <img src={{card.get("dataURL")}}>
+  </div>
+
+  <div class="padding">
+    <h2 ng-bind="card.get('name')" id="TEST"></h2>
+    <p>company: <span ng-bind="card.get('company')"></span></p> 
+    <p>email: <span ng-bind="card.get('email')"></span></p> 
+
+      <super-modal-show location="card#edit?id={{ card.id }}">
+        <button class="button button-block button-positive">
+          Edit
+        </button>
+      </super-modal-show>
+
+      <button ng-click="remove(card.id)" class="button button-block button-negative">
+        Remove
+      </button>
+
+</div>

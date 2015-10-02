@@ -1,0 +1,43 @@
+<div ng-controller="EditController">
+  <super-navbar>
+    <super-navbar-button ng-click="cancel()">
+      Cancel
+    </super-navbar-button>
+    <super-navbar-title>
+      Edit
+    </super-navbar-title>
+  </super-navbar>
+
+  <div id="camera">
+    <img id="editCardImage" src={{card.get("dataURL")}} title="Add Card Image" ng-click="CameraTapped()">
+  </div>
+
+  <div class="list list-inset">
+    
+    <label class="item item-input" name="nameLabel">
+      <span class="input-label">name</span>
+      <input type="text" value={{card.get('name')}} placeholder="Name" id="editName">
+    </label>
+    
+    <label class="item item-input">
+      <span class="input-label">company</span>
+      <input type="text" value={{card.get('company')}} placeholder="Company" id="editCompany">
+    </label>
+    
+    <label class="item item-input">
+      <span class="input-label">email</span>
+      <input type="text" value={{card.get('email')}} placeholder="Email" id="editEmail">
+    </label>
+  
+    <label class="item item-input">
+      <span class="input-label">tags</span>
+      <input type="text" value={{card.get('tags')}} placeholder="Tags" id="editTags">
+    </label>
+    
+
+    <br>
+
+    <button class="button button-block button-positive" ng-click="save()">Save</button>
+
+  </div>
+</div>
