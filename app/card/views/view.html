@@ -11,8 +11,9 @@
 
   <div class="padding">
     <h2 ng-bind="card.get('name')" id="TEST"></h2>
-    <p>company: <span ng-bind="card.get('company')"></span></p> 
-    <p>email: <span ng-bind="card.get('email')"></span></p> 
+    <p>company: <span ng-bind="card.get('company')"></span></p>
+    <p>email: <span ng-bind="card.get('email')"></span></p>
+    <p>tags: <span ng-bind="card.get('tags')"></span></p>
 
       <super-modal-show location="card#edit?id={{ card.id }}">
         <button class="button button-block button-positive">

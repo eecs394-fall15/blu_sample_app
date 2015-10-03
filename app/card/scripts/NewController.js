@@ -40,7 +40,6 @@ angular
 				}
 			});
 
-			init(); // NOT WORKING. It goes into the init function and on the first line, "var list = document.getElementById("list");", this returns undefined so it fails
 			supersonic.ui.modal.hide();
 		}
     });

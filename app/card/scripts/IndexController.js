@@ -4,15 +4,29 @@ angular
 
 		var init = function() {
 			var list = document.getElementById("list");
-			list.appendChild(CreateListHeader("Test Header"));
 
 			var CardsObject = Parse.Object.extend("howzitData");
 			var query = new Parse.Query(CardsObject);
-			query.find({
-				success: function (results) {
-						for (var i = 0; i < results.length; i++) {
-								list.appendChild(CreateListElement(results[i].id, results[i].get("name"), results[i].get("company"), results[i].get("email"), results[i].get("dataURL")));
+			query.descending("createdAt").find( {
+				success: function (results) { // Find all values in database and stuff into results. Results will be in descending order by creation date.
+					var today = new Date();
+					var yesterday = addDays(new Date(), -1);
+					var lastDate = [0, 0, 0];
+					for (var i = 0; i < results.length; i++) { // Go through all rows in database.
+						var date = getDateInfo(new Date(results[i].createdAt)); // Get creation date of current row and store as [yyyy, monthName, d?d].
+						if(!areDatesEqual(date, lastDate)) { // Compare with previously stored date. If different...
+							var dateString =
+											areDatesEqual(date, getDateInfo(today)) ?
+												"Today" :
+											areDatesEqual(date, getDateInfo(yesterday)) ?
+												"Yesterday" :
+												date[1] + " " + date[2] + ", " + date[0];
+							list.appendChild(CreateListHeader(dateString)); // ...create a list header with either the date, or "today"/"yesterday" strings.
+							lastDate = date; // ...and update the previously stored date variable
 						}
+						// Append row as list element
+						list.appendChild(CreateListElement(results[i].id, results[i].get("name"), results[i].get("company"), results[i].get("email"), results[i].get("dataURL")));
+					}
 				},
 				error: function (error) {
 						alert("Error: " + error.code + " " + error.message);
