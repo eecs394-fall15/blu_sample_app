@@ -15,7 +15,7 @@ angular
 					$scope.card = result;
 				},
 				error: function(object, error) {
-					alert("Error: " + error.code + " " + error.message);
+					alert("Error in EditController: " + error.code + " " + error.message);
 				}
 			});
 		}

@@ -3,7 +3,7 @@ angular
 	.controller('ViewController', function($scope, supersonic) {
 		$scope.card;
 
-		$scope.DeclareCard = function() {
+		supersonic.ui.views.current.whenVisible( function() {
 			var CardsObject = Parse.Object.extend("howzitData");
 			var query = new Parse.Query(CardsObject);
 			query.get(getURLParameter("id"), {
@@ -11,11 +11,11 @@ angular
 					$scope.card = result;
 				},
 				error: function(object, error) {
-					alert("Error: " + error.code + " " + error.message);
+					alert("Error in ViewController (DeclareCard): " + error.code + " " + error.message);
 				}
 			});
-		}
-		$scope.DeclareCard();
+		});
+		// $scope.DeclareCard();
 
 		$scope.remove = function(id) {
 			$scope.card.destroy({
@@ -24,7 +24,7 @@ angular
 					supersonic.ui.layers.pop(); // Go back to previous page
 				},
 				error: function(myObject, error) {
-					alert("Error: " + error.code + " " + error.message);
+					alert("Error in ViewController (remove): " + error.code + " " + error.message);
 				}
 			});
 		}

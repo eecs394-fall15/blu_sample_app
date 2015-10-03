@@ -4,6 +4,7 @@ angular
 
 		var init = function() {
 			var list = document.getElementById("list");
+			list.innerHTML = "";
 
 			var CardsObject = Parse.Object.extend("howzitData");
 			var query = new Parse.Query(CardsObject);
@@ -29,7 +30,7 @@ angular
 					}
 				},
 				error: function (error) {
-						alert("Error: " + error.code + " " + error.message);
+						alert("Error in IndexController: " + error.code + " " + error.message);
 				}
 			});
 		};
@@ -78,6 +79,10 @@ angular
 			return navigate;
 		}
 
-		init(); // Calls the above functions upon starting.	
+		supersonic.ui.views.current.whenVisible( function() {
+    		init();
+		});
+
+		//init(); // Calls the above functions upon starting.	
 
 	});

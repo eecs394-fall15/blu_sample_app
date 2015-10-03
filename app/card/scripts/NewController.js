@@ -36,7 +36,7 @@ angular
 					// The object was saved successfully
 				},
 				error: function(card, error) {
-					alert("Error: " + error.code + " " + error.message);
+					alert("Error in NewController: " + error.code + " " + error.message);
 				}
 			});
 
