@@ -16,5 +16,17 @@ angular
 			});
 		}
 		$scope.DeclareCard();
+
+		$scope.remove = function(id) {
+			$scope.card.destroy({
+				success: function(myObject) {
+					// The object was deleted from the Parse Cloud.
+					supersonic.ui.layers.pop(); // Go back to previous page
+				},
+				error: function(myObject, error) {
+					alert("Error: " + error.code + " " + error.message);
+				}
+			});
+		}
 		
 	});

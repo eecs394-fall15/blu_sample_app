@@ -48,9 +48,6 @@ angular
 					card.set("dataURL", document.getElementById("editCardImage").src);
 					card.save();
 
-					// Then, update the values on the previous page
-
-					// Finally, close the modal page
 					supersonic.ui.modal.hide();
 				}
 			});
