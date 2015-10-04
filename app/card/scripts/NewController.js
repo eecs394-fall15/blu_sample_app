@@ -1,6 +1,9 @@
 angular
 	.module('card')
 	.controller("NewController", function ($scope, supersonic) {
+        var cameraDataURL = "http://localhost/images/camera.jpg";
+        var defaultDataURL = "http://localhost/images/default.jpg";
+
 		$scope.cancel = function () {
 			supersonic.ui.modal.hide();
 		};
@@ -30,7 +33,9 @@ angular
 				company: document.getElementById("company").value,
 				email: document.getElementById("email").value,
 				tags: document.getElementById("tags").value,
-				dataURL: document.getElementById("cardImage").src
+				dataURL: function(){ var imageSrc = document.getElementById("cardImage").src;
+                                     // Set dataURL as default.jpg if no image was set
+                                     return imageSrc == cameraDataURL ? defaultDataURL : imageSrc }()
 			}, {
 				success: function(card) {
 					// The object was saved successfully
