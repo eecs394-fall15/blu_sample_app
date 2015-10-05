@@ -83,6 +83,20 @@ angular
     		init();
 		});
 
-		//init(); // Calls the above functions upon starting.	
+		var searchBoxIsHidden = true;
+		$scope.OnSearchClick = function() {
+			searchBoxIsHidden = !searchBoxIsHidden;
+
+			// Toggle visibility
+			document.getElementById("searchBox").style.display = searchBoxIsHidden ? "none" : "block";
+
+			// Clear inputted text
+			document.getElementById("filterText").value = "";
+		}
+
+		$scope.Filter = function() {
+			var text = document.getElementById("filterText").value;
+			supersonic.ui.dialog.alert("Filter Button Tapped!\nInputted Text: \"" + text + "\"");
+		}
 
 	});

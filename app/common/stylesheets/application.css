@@ -25,6 +25,10 @@
 	margin: 5px 0;
 }
 
+#searchBox {
+  margin: 0;
+}
+
 #camera img {
   width: 100%;
 }

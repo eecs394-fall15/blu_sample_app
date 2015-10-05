@@ -16,8 +16,6 @@ traits:
             default: 80046
   
 schemas:
-  - Card_collection: '{"$schema":"http://json-schema.org/schema","title":"Card collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Card representation","properties":{"name":{"type":"string"},"company":{"type":"string"},"email":{"type":"string"},"dateId":{"type":"string"},"tags":{"type":"string"},"id":{"type":"string"},"dataURL":{"type":"string"}},"required":[]}}}}'
-  - Card_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Card representation","properties":{"object":{"type":"object","properties":{"name":{"type":"string"},"company":{"type":"string"},"email":{"type":"string"},"dateId":{"type":"string"},"tags":{"type":"string"},"id":{"type":"string"},"dataURL":{"type":"string"}},"required":[]}}}'
   - howzit_collection: '{"$schema":"http://json-schema.org/schema","title":"howzit collection","type":"object","properties":{"results":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical howzit representation","properties":{"company":{"type":"string"},"createdAt":{"type":"string"},"email":{"type":"string"},"name":{"type":"string"},"objectId":{"type":"string"},"tags":{"type":"string"},"updatedAt":{"type":"string"}},"required":[]}}}}'
   - howzit_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical howzit representation","properties":{"company":{"type":"string"},"createdAt":{"type":"string"},"email":{"type":"string"},"name":{"type":"string"},"objectId":{"type":"string"},"tags":{"type":"string"},"updatedAt":{"type":"string"}},"required":[]}'
 
@@ -166,16 +164,6 @@ resourceTypes:
         responses:
           200:
 
-
-/Card:
-  description: |
-    {
-      "resourceName": "Card",
-      "identifierKey": "id"
-    }
-  type: dolan_db_collection
-  /{id}:
-    type: dolan_db_member
 
 /howzit:
   description: |

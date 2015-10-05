@@ -13,14 +13,26 @@
     </super-modal-show>
   </div>
 
-  <div id="my-cards">
+  <div class="item item-icon-right" id="my-cards">
     my cards
+    <i class="icon super-search" ng-click="OnSearchClick()"></i>
+  </div>
+
+  <div class="list" id="searchBox" style="display:none">
+    <div class="item item-input-inset">
+      <label class="item-input-wrapper">
+        <input type="text" placeholder="Search Query" id="filterText">
+      </label>
+      <button class="button button-small" ng-click="Filter()">
+        Filter
+      </button>
+    </div>
   </div>
 
 <!--   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div ng-hide="showSpinner"> -->
     <ul class="list" id="list">
-      <!-- Filled out by JavaScript in index.js -->
+      <!-- Filled out by JavaScript in IndexController.js -->
     </ul>
 
   </div>
