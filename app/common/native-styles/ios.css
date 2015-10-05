@@ -2,6 +2,9 @@
  * These styles apply for native components on iOS.
  * Read more about native styles at http://docs.appgyver.com
  ***********************************************************/
+.content {
+  font-family: 'Dosis';
+}
 
 navigation-bar {
   background-color: #6FA8DC;
@@ -12,6 +15,7 @@ navigation-bar title {
   color: #ffffff;
   font-size: 18px;
   font-weight: 600;
+  font-family: 'Dosis';
 }
 
 navigation-bar button, navigation-bar back-bar-button {
@@ -31,7 +35,7 @@ tab-bar {
 
 tab-bar tab-bar-item {
   color: #b0b1b4;
-  font-family: "Avenir";
+  font-family: 'Dosis';
   font-size: 10px;
 }
 

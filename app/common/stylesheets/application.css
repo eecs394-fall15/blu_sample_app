@@ -1,3 +1,20 @@
+.content{
+  font-family: 'Dosis';
+}
+
+.button {
+  font-family: 'Dosis';
+  font-weight: 600;
+}
+
+.item {
+  font-family: 'Dosis';
+}
+
+.list {
+  font-family: 'Dosis';
+}
+
 .supersonic-navbar-mock {
   background-color: #00B5FF !important;
   text-align: center;
@@ -15,7 +32,6 @@
 #my-cards {
   background-color: #9FC5E7;
   color: white;
-  font-family: helvetica;
   font-size: x-large;
   margin: 0;
   padding: 15px;
@@ -23,6 +39,8 @@
 
 .item h2 {
 	margin: 5px 0;
+  font-family: 'Dosis';
+  font-weight: 600;
 }
 
 #searchBox {
@@ -37,3 +55,4 @@
   width: 80%;
   margin: 15px 10%;
 }
+
