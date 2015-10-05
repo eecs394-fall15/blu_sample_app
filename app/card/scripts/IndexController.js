@@ -26,7 +26,7 @@ angular
 							lastDate = date; // ...and update the previously stored date variable
 						}
 						// Append row as list element
-						list.appendChild(CreateListElement(results[i].id, results[i].get("name"), results[i].get("company"), results[i].get("email"), results[i].get("dataURL")));
+						list.appendChild(CreateListElement(results[i].id, results[i].get("name"), results[i].get("company"), results[i].get("email"), results[i].get("dataURLFront")));
 					}
 				},
 				error: function (error) {
@@ -51,7 +51,7 @@ angular
 		//	<p>Sample Company</p>
 		//	<p>Sample Email</p>
 		// </a>
-		var CreateListElement = function(objectId, name, company, email, dataURL) {
+		var CreateListElement = function(objectId, name, company, email, dataURLFront) {
 			var navigate = document.createElement("super-navigate");
 			navigate.setAttribute("location", "card#view?id=" + objectId);
 
@@ -59,7 +59,7 @@ angular
 			listElement.setAttribute("class", "item item-thumbnail-left");
 
 			var image = document.createElement("img");
-			image.src = dataURL || "/images/default.jpg";
+			image.src = dataURLFront || "/images/default.jpg";
 
 			var h2Name = document.createElement("h2");
 			h2Name.innerHTML = name;
