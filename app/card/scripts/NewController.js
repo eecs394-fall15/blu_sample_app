@@ -15,11 +15,20 @@ angular
 			targetHeight: 1000
 		};
 		
-		$scope.CameraTapped = function() {
+		$scope.CameraTappedFront = function() {
 			supersonic.media.camera.takePicture(cameraOptions).then( function(result){
 				//save image dataURL into dataURL
 				//change the image on the new.html to the one taken
-				var image = document.getElementById('cardImage');
+				var image = document.getElementById('cardImageFront');
+				image.src = "data:image/jpeg;base64," + result;
+			})
+		};
+
+		$scope.CameraTappedBack = function() {
+			supersonic.media.camera.takePicture(cameraOptions).then( function(result){
+				//save image dataURL into dataURL
+				//change the image on the new.html to the one taken
+				var image = document.getElementById('cardImageBack');
 				image.src = "data:image/jpeg;base64," + result;
 			})
 		};
@@ -33,9 +42,16 @@ angular
 				company: document.getElementById("company").value,
 				email: document.getElementById("email").value,
 				tags: document.getElementById("tags").value,
-				dataURL: function(){ var imageSrc = document.getElementById("cardImage").src;
-                                     // Set dataURL as default.jpg if no image was set
-                                     return imageSrc == cameraDataURL ? defaultDataURL : imageSrc }()
+				dataURLFront: function(){ 
+					var imageSrcFront = document.getElementById("cardImageFront").src;
+	                // Set dataURL as default.jpg if no image was set
+	                return imageSrcFront == cameraDataURL ? defaultDataURL : imageSrcFront
+                }(),
+                dataURLBack: function(){ 
+					var imageSrcBack = document.getElementById("cardImageBack").src;
+	                // Set dataURL as default.jpg if no image was set
+	                return imageSrcBack == cameraDataURL ? defaultDataURL : imageSrcBack
+                }()
 			}, {
 				success: function(card) {
 					// The object was saved successfully
@@ -44,7 +60,6 @@ angular
 					alert("Error in NewController: " + error.code + " " + error.message);
 				}
 			});
-
 			supersonic.ui.modal.hide();
 		}
     });
