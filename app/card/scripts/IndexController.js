@@ -34,7 +34,7 @@ angular
 					lastDate = date; // ...and update the previously stored date variable
 				}
 				// Append row as list element
-				list.appendChild(CreateListElement(results[i].id, results[i].get("name"), results[i].get("company"), results[i].get("email"), results[i].get("dataURL")));
+				list.appendChild(CreateListElement(results[i].id, results[i].get("name"), results[i].get("company"), results[i].get("email"), results[i].get("dataURLFront")));
 			}
 			// Once it's done, overwrite the page's contents.
 			// Note how this is done at the end, to avoid getting a blank screen while the data loads.
