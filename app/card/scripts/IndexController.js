@@ -3,37 +3,43 @@ angular
 	.controller('IndexController', function($scope, supersonic) {
 
 		var init = function() {
-			var list = document.getElementById("list");
-			list.innerHTML = "";
-
 			var CardsObject = Parse.Object.extend("howzitData");
 			var query = new Parse.Query(CardsObject);
 			query.descending("createdAt").find( {
 				success: function (results) { // Find all values in database and stuff into results. Results will be in descending order by creation date.
-					var today = new Date();
-					var yesterday = addDays(new Date(), -1);
-					var lastDate = [0, 0, 0];
-					for (var i = 0; i < results.length; i++) { // Go through all rows in database.
-						var date = getDateInfo(new Date(results[i].createdAt)); // Get creation date of current row and store as [yyyy, monthName, d?d].
-						if(!areDatesEqual(date, lastDate)) { // Compare with previously stored date. If different...
-							var dateString =
-											areDatesEqual(date, getDateInfo(today)) ?
-												"Today" :
-											areDatesEqual(date, getDateInfo(yesterday)) ?
-												"Yesterday" :
-												date[1] + " " + date[2] + ", " + date[0];
-							list.appendChild(CreateListHeader(dateString)); // ...create a list header with either the date, or "today"/"yesterday" strings.
-							lastDate = date; // ...and update the previously stored date variable
-						}
-						// Append row as list element
-						list.appendChild(CreateListElement(results[i].id, results[i].get("name"), results[i].get("company"), results[i].get("email"), results[i].get("dataURL")));
-					}
+					GenerateList(results);
 				},
 				error: function (error) {
 						alert("Error in IndexController: " + error.code + " " + error.message);
 				}
 			});
 		};
+
+		function GenerateList(results) {
+			var list = document.createElement("ul");
+
+			var today = new Date();
+			var yesterday = addDays(new Date(), -1);
+			var lastDate = [0, 0, 0];
+			for (var i = 0; i < results.length; i++) { // Go through all rows in database.
+				var date = getDateInfo(new Date(results[i].createdAt)); // Get creation date of current row and store as [yyyy, monthName, d?d].
+				if(!areDatesEqual(date, lastDate)) { // Compare with previously stored date. If different...
+					var dateString =
+									areDatesEqual(date, getDateInfo(today)) ?
+										"Today" :
+									areDatesEqual(date, getDateInfo(yesterday)) ?
+										"Yesterday" :
+										date[1] + " " + date[2] + ", " + date[0];
+					list.appendChild(CreateListHeader(dateString)); // ...create a list header with either the date, or "today"/"yesterday" strings.
+					lastDate = date; // ...and update the previously stored date variable
+				}
+				// Append row as list element
+				list.appendChild(CreateListElement(results[i].id, results[i].get("name"), results[i].get("company"), results[i].get("email"), results[i].get("dataURL")));
+			}
+			// Once it's done, overwrite the page's contents.
+			// Note how this is done at the end, to avoid getting a blank screen while the data loads.
+			document.getElementById("list").innerHTML = list.innerHTML;
+		}
 
 		// <div class="item item-divider">
 		//	 {{ content }}
@@ -92,11 +98,35 @@ angular
 
 			// Clear inputted text
 			document.getElementById("filterText").value = "";
+
+			// Refresh list of cards
+			init();
 		}
 
 		$scope.Filter = function() {
+			// Declare an array with all the words in the text box. Declared as an array.
 			var text = document.getElementById("filterText").value;
-			supersonic.ui.dialog.alert("Filter Button Tapped!\nInputted Text: \"" + text + "\"");
+
+			var CardsObject = Parse.Object.extend("howzitData");
+
+			var nameQuery = new Parse.Query(CardsObject);
+			nameQuery.contains("name", text);
+			var companyQuery = new Parse.Query(CardsObject);
+			companyQuery.contains("company", text);
+			var emailQuery = new Parse.Query(CardsObject);
+			emailQuery.contains("email", text);
+			var tagsQuery = new Parse.Query(CardsObject);
+			tagsQuery.contains("tags", text);
+			var mainQuery = Parse.Query.or(nameQuery, companyQuery, emailQuery, tagsQuery);
+
+			mainQuery.find({
+				success: function(results) {
+					GenerateList(results);
+				},
+				error: function(error) {
+					alert("Error: " + error.code + " " + error.message);
+				}
+			});
 		}
 
 	});
