@@ -1,7 +1,7 @@
 <div ng-controller="ViewController">
   <super-navbar>
-    <super-navbar-title>
-      New Card
+    <super-navbar-title class="navbar-title">
+      <ng-bind="card.get('name')" id="TEST">
     </super-navbar-title>
   </super-navbar>
 

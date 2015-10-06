@@ -1,4 +1,9 @@
-.content{
+.navbar-title {
+  font-family: 'Dosis';
+  font-weight: 600;
+}
+
+.navbar-back {
   font-family: 'Dosis';
 }
 
@@ -8,11 +13,8 @@
 }
 
 .item {
-  font-family: 'Dosis';
-}
-
-.list {
-  font-family: 'Dosis';
+  font-family: 'Roboto';
+  font-weight: 300;
 }
 
 .supersonic-navbar-mock {
