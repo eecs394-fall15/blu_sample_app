@@ -7,7 +7,7 @@ angular
 			supersonic.ui.modal.hide();
 		};
 
-		$scope.DeclareCard = function() {
+		supersonic.ui.views.current.whenVisible( function() {
 			var CardsObject = Parse.Object.extend("howzitData");
 			var query = new Parse.Query(CardsObject);
 			query.get(getURLParameter("id"), {
@@ -18,8 +18,7 @@ angular
 					alert("Error in EditController: " + error.code + " " + error.message);
 				}
 			});
-		}
-		$scope.DeclareCard();
+		})
 
 		var cameraOptions = {
 			destinationType: "dataURL",
@@ -56,9 +55,11 @@ angular
 					card.set("tags", document.getElementById("editTags").value);
 					card.set("dataURLFront", document.getElementById("editCardImageFront").src);
 					card.set("dataURLBack", document.getElementById("editCardImageBack").src);
-					card.save();
+					card.save().then(function() {
+						supersonic.ui.modal.hide();
+					});
 
-					supersonic.ui.modal.hide();
+					
 				}
 			});
 		}
