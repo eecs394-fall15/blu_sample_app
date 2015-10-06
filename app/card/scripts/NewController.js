@@ -55,11 +55,11 @@ angular
 			}, {
 				success: function(card) {
 					// The object was saved successfully
+					supersonic.ui.modal.hide();
 				},
 				error: function(card, error) {
 					alert("Error in NewController: " + error.code + " " + error.message);
 				}
 			});
-			supersonic.ui.modal.hide();
 		}
     });
