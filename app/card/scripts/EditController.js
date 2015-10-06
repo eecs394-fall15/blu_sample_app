@@ -28,14 +28,23 @@ angular
 			targetHeight: 1000
 		};
 
-		$scope.CameraTapped = function() {
+		$scope.CameraTappedFront = function() {
 			supersonic.media.camera.takePicture(cameraOptions).then( function(result){
 				//save image dataURL into dataURL
 				//change the image on the edit.html to the one taken
-				var image = document.getElementById('editCardImage');
-				image.src = "data:image/jpeg;base64," + result;
+				var imageFront = document.getElementById('editCardImageFront');
+				imageFront.src = "data:image/jpeg;base64," + result;
 			})
 		};
+		$scope.CameraTappedBack = function() {
+			supersonic.media.camera.takePicture(cameraOptions).then( function(result){
+				//save image dataURL into dataURL
+				//change the image on the edit.html to the one taken
+				var imageBack = document.getElementById('editCardImageBack');
+				imageBack.src = "data:image/jpeg;base64," + result;
+			})
+		};
+
 
 		$scope.save = function() {
 			$scope.card.save(null, {
@@ -45,7 +54,8 @@ angular
 					card.set("company", document.getElementById("editCompany").value);
 					card.set("email", document.getElementById("editEmail").value);
 					card.set("tags", document.getElementById("editTags").value);
-					card.set("dataURL", document.getElementById("editCardImage").src);
+					card.set("dataURLFront", document.getElementById("editCardImageFront").src);
+					card.set("dataURLBack", document.getElementById("editCardImageBack").src);
 					card.save();
 
 					supersonic.ui.modal.hide();
