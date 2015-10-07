@@ -23,8 +23,8 @@ angular
 		var cameraOptions = {
 			destinationType: "dataURL",
 			quality: 40,
-			targetWidth: 1000,
-			targetHeight: 1000
+			targetWidth: 600,
+			targetHeight: 600
 		};
 
 		$scope.CameraTappedFront = function() {
@@ -55,6 +55,10 @@ angular
 					card.set("tags", document.getElementById("editTags").value);
 					card.set("dataURLFront", document.getElementById("editCardImageFront").src);
 					card.set("dataURLBack", document.getElementById("editCardImageBack").src);
+					card.set("searchData", document.getElementById("editName").value.toLowerCase() + " "
+											+ document.getElementById("editCompany").value.toLowerCase() + " "
+											+ document.getElementById("editEmail").value.toLowerCase() + " "
+											+ document.getElementById("editTags").value.toLowerCase());
 					card.save().then(function() {
 						supersonic.ui.modal.hide();
 					});

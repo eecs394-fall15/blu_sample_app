@@ -11,8 +11,8 @@ angular
 		var cameraOptions = {
 			destinationType: "dataURL",
 			quality: 40,
-			targetWidth: 1000,
-			targetHeight: 1000
+			targetWidth: 600,
+			targetHeight: 600
 		};
 		
 		$scope.CameraTappedFront = function() {
@@ -51,7 +51,11 @@ angular
 					var imageSrcBack = document.getElementById("cardImageBack").src;
 	                // Set dataURL as default.jpg if no image was set
 	                return imageSrcBack == cameraDataURL ? defaultDataURL : imageSrcBack
-                }()
+                }(),
+                searchData: document.getElementById("name").value.toLowerCase() + " "
+                			+ document.getElementById("company").value.toLowerCase() + " "
+                			+ document.getElementById("email").value.toLowerCase() + " "
+                			+ document.getElementById("tags").value.toLowerCase()
 			}, {
 				success: function(card) {
 					// The object was saved successfully

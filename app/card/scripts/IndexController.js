@@ -109,17 +109,11 @@ angular
 
 			var CardsObject = Parse.Object.extend("howzitData");
 
-			var nameQuery = new Parse.Query(CardsObject);
-			nameQuery.contains("name", text);
-			var companyQuery = new Parse.Query(CardsObject);
-			companyQuery.contains("company", text);
-			var emailQuery = new Parse.Query(CardsObject);
-			emailQuery.contains("email", text);
-			var tagsQuery = new Parse.Query(CardsObject);
-			tagsQuery.contains("tags", text);
-			var mainQuery = Parse.Query.or(nameQuery, companyQuery, emailQuery, tagsQuery);
+			// ALL data (name, company, email, tags) is now previously stored in "searchData" column, in all lower case
+			var query = new Parse.Query(CardsObject);
+			query.contains("searchData", text.toLowerCase());
 
-			mainQuery.find({
+			query.find({
 				success: function(results) {
 					GenerateList(results);
 				},
