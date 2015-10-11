@@ -49,13 +49,21 @@
   margin: 0;
 }
 
-#camera img {
+#new-camera img {
   width: 48%;
 }
 
-#camera {
+#new-camera {
   padding: 1%;
   text-align: center;
+}
+
+.camera {
+  padding: 1%;
+}
+
+.camera img {
+  width: 100%;
 }
 
 #submitButton {
