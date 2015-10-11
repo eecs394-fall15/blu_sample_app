@@ -6,8 +6,10 @@
   </super-navbar>
 
   <div class="camera">
-    <img src={{card.get("dataURLFront")}}>
-    <img src={{card.get("dataURLBack")}}>
+    <ul rn-carousel>
+      <li><img src={{card.get("dataURLFront")}}></li>
+      <li><img src={{card.get("dataURLBack")}}></li>
+    </ul>
   </div>
 
   <div class="padding">
