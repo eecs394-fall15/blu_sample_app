@@ -16,6 +16,9 @@
     <p>email: <span ng-bind="card.get('email')"></span></p>
     <p>notes: <span ng-bind="card.get('tags')"></span></p>
 
+    <div id="badges"></div>
+
+
       <super-modal-show location="card#edit?id={{ card.id }}">
         <button class="button button-block button-positive">
           Edit

@@ -9,6 +9,18 @@ angular
 			query.get(getURLParameter("id"), {
 				success: function(result) {
 					$scope.card = result;
+					var badges = document.getElementById("badges");
+					badges.innerHTML = "";
+
+					if( $scope.card.get("sentEmail") ) {
+						badges.innerHTML += ("<p>Sent Email!</p>");
+					}
+					if( $scope.card.get("resume") ) {
+						badges.innerHTML += ("<p>Emailed Resume!</p>");
+					}
+					if( $scope.card.get("interview") ) {
+						badges.innerHTML += ("<p>Got an Interview!</p>");
+					}
 				},
 				error: function(object, error) {
 					alert("Error in ViewController (DeclareCard): " + error.code + " " + error.message);
