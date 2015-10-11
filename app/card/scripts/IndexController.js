@@ -99,8 +99,13 @@ angular
 			// Clear inputted text
 			document.getElementById("searchText").value = "";
 
+			//Resets the Search Button
+			ShowSearch();
+
 			// Refresh list of cards
 			init();
+
+
 		}
 
 		$scope.Search = function() {
