@@ -97,15 +97,15 @@ angular
 			document.getElementById("searchBox").style.display = searchBoxIsHidden ? "none" : "block";
 
 			// Clear inputted text
-			document.getElementById("filterText").value = "";
+			document.getElementById("searchText").value = "";
 
 			// Refresh list of cards
 			init();
 		}
 
-		$scope.Filter = function() {
+		$scope.Search = function() {
 			// Declare an array with all the words in the text box. Declared as an array.
-			var text = document.getElementById("filterText").value;
+			var text = document.getElementById("searchText").value;
 
 			var CardsObject = Parse.Object.extend("howzitData");
 
@@ -116,11 +116,18 @@ angular
 			query.find({
 				success: function(results) {
 					GenerateList(results);
+					ShowClear();
 				},
 				error: function(error) {
 					alert("Error: " + error.code + " " + error.message);
 				}
 			});
+		}
+
+		$scope.Clear = function() {
+			init();
+			ShowSearch();
+			document.getElementById("searchText").value = "";
 		}
 
 	});

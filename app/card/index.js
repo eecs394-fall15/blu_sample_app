@@ -36,3 +36,15 @@ function addDays(date, days) {
 	date.setDate(date.getDate() + days);
 	return date;
 }
+
+// Used in IndexController
+function ShowSearch() {
+	document.getElementById("search").style.display = "block";
+	document.getElementById("clear").style.display = "none";
+}
+
+// Used in IndexController
+function ShowClear() {
+	document.getElementById("search").style.display = "none";
+	document.getElementById("clear").style.display = "block";
+}
