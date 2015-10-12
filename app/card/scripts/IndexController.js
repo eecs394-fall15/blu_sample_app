@@ -7,6 +7,8 @@ angular
 			var query = new Parse.Query(CardsObject);
 			query.descending("createdAt").find( {
 				success: function (results) { // Find all values in database and stuff into results. Results will be in descending order by creation date.
+					ShowSearch();
+					document.getElementById("searchText").value = "";
 					GenerateList(results);
 				},
 				error: function (error) {
@@ -90,7 +92,7 @@ angular
 		});
 
 		var searchBoxIsHidden = true;
-		$scope.OnSearchClick = function() {
+		$scope.OnSearchClick = function() { // User clicks on the magnifying glass icon
 			searchBoxIsHidden = !searchBoxIsHidden;
 
 			// Toggle visibility
