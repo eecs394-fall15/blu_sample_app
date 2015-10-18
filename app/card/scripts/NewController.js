@@ -43,8 +43,9 @@ angular
 				email: document.getElementById("email").value,
 				tags: document.getElementById("tags").value,
 				sentEmail: document.getElementById('sentEmail').checked,
-				resume: document.getElementById('resume').checked,
-				interview: document.getElementById('interview').checked,
+				applied: document.getElementById('applied').checked,
+				referred: document.getElementById('referred').checked,
+				meeting: document.getElementById('meeting').checked,
 				dataURLFront: function(){ 
 					var imageSrcFront = document.getElementById("cardImageFront").src;
 	                // Set dataURL as default.jpg if no image was set

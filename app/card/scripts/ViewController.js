@@ -13,13 +13,20 @@ angular
 					badges.innerHTML = "";
 
 					if( $scope.card.get("sentEmail") ) {
-						badges.innerHTML += ("<p>Sent Email!</p>");
+						//badges.innerHTML += ("<p>Sent Email!</p>");
+						document.getElementById('sentEmail').checked = true;
 					}
-					if( $scope.card.get("resume") ) {
-						badges.innerHTML += ("<p>Emailed Resume!</p>");
+					if( $scope.card.get("applied") ) {
+						//badges.innerHTML += ("<p>Applied!</p>");
+						document.getElementById('applied').checked = true;
 					}
-					if( $scope.card.get("interview") ) {
-						badges.innerHTML += ("<p>Got an Interview!</p>");
+					if( $scope.card.get("referred") ) {
+						//badges.innerHTML += ("<p>Referred!</p>");
+						document.getElementById('referred').checked = true;
+					}
+					if( $scope.card.get("meeting") ) {
+						//badges.innerHTML += ("<p>Set up a meeting!</p>");
+						document.getElementById('meeting').checked = true;
 					}
 				},
 				error: function(object, error) {

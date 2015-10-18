@@ -14,6 +14,33 @@
     <p>email: <span ng-bind="card.get('email')"></span></p>
     <p>notes: <span ng-bind="card.get('tags')"></span></p>
     
+    <ul class="list card">
+      <li class="item item-checkbox" >
+         <label class="checkbox">
+           <input type="checkbox" id="sentEmail" disabled="disabled">
+         </label>
+         Sent Followup Email
+      </li>
+      <li class="item item-checkbox" >
+         <label class="checkbox">
+           <input type="checkbox" id="applied" disabled="disabled">
+         </label>
+         Applied for a Position
+      </li>
+      <li class="item item-checkbox" >
+         <label class="checkbox">
+           <input type="checkbox" id="referred" disabled="disabled">
+         </label>
+         Referred
+      </li>
+      <li class="item item-checkbox" >
+         <label class="checkbox">
+           <input type="checkbox" id="meeting" disabled="disabled">
+         </label>
+         Set up a Meeting
+      </li>
+    </ul>
+
     <div id="badges"></div>
 
     <div class="camera">
@@ -21,7 +48,7 @@
       <img src={{card.get("dataURLBack")}}>
     </div>
 
-    <button ng-click="remove(card.id)" class="button button-block button-negative">
+    <button ng-click="remove(card.id)" class="button button-block button-assertive">
       Remove
     </button>
   </div>

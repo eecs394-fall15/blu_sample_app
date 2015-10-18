@@ -9,9 +9,9 @@
       EDIT CARD
     </super-navbar-title>
 
-
-
-
+    <super-navbar-button side="right" ng-click="save()")>
+      Save
+    </super-navbar-title>
 
   </super-navbar>
 
@@ -46,25 +46,30 @@
 
     <br>
 
-<!-- Followup email, applied for position, referred, set up phone call -->
     <ul class="list">
       <li class="item item-checkbox" >
          <label class="checkbox">
            <input type="checkbox" id="sentEmail">
          </label>
-         Sent Initial Email
+         Sent Followup Email
       </li>
       <li class="item item-checkbox" >
          <label class="checkbox">
-           <input type="checkbox" id="resume">
+           <input type="checkbox" id="applied">
          </label>
-         Emailed a Resume
+         Applied for a Position
       </li>
       <li class="item item-checkbox" >
          <label class="checkbox">
-           <input type="checkbox" id="interview">
+           <input type="checkbox" id="referred">
          </label>
-         Received an Interview
+         Referred
+      </li>
+      <li class="item item-checkbox" >
+         <label class="checkbox">
+           <input type="checkbox" id="meeting">
+         </label>
+         Set up a Meeting
       </li>
     </ul>
 

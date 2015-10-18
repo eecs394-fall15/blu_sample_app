@@ -17,11 +17,14 @@ angular
 					if( $scope.card.get("sentEmail") ) {
 						document.getElementById('sentEmail').checked = true;
 					}
-					if( $scope.card.get("resume") ) {
-						document.getElementById('resume').checked = true;
+					if( $scope.card.get("applied") ) {
+						document.getElementById('applied').checked = true;
 					}
-					if( $scope.card.get("interview") ) {
-						document.getElementById('interview').checked = true;
+					if( $scope.card.get("referred") ) {
+						document.getElementById('referred').checked = true;
+					}
+					if( $scope.card.get("meeting") ) {
+						document.getElementById('meeting').checked = true;
 					}
 				},
 				error: function(object, error) {
@@ -70,8 +73,9 @@ angular
 											+ document.getElementById("editEmail").value.toLowerCase() + " "
 											+ document.getElementById("editTags").value.toLowerCase());
 					card.set("sentEmail", document.getElementById("sentEmail").checked);
-					card.set("resume", document.getElementById("resume").checked);
-					card.set("interview", document.getElementById("interview").checked);
+					card.set("applied", document.getElementById("applied").checked);
+					card.set("referred", document.getElementById("referred").checked);
+					card.set("meeting", document.getElementById("meeting").checked);
 					card.save().then(function() {
 						supersonic.ui.modal.hide();
 					});
