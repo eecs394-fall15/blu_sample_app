@@ -13,6 +13,16 @@ angular
 			query.get(getURLParameter("id"), {
 				success: function(result) {
 					$scope.card = result;
+					
+					if( $scope.card.get("sentEmail") ) {
+						document.getElementById('sentEmail').checked = true;
+					}
+					if( $scope.card.get("resume") ) {
+						document.getElementById('resume').checked = true;
+					}
+					if( $scope.card.get("interview") ) {
+						document.getElementById('interview').checked = true;
+					}
 				},
 				error: function(object, error) {
 					alert("Error in EditController: " + error.code + " " + error.message);
@@ -59,6 +69,9 @@ angular
 											+ document.getElementById("editCompany").value.toLowerCase() + " "
 											+ document.getElementById("editEmail").value.toLowerCase() + " "
 											+ document.getElementById("editTags").value.toLowerCase());
+					card.set("sentEmail", document.getElementById("sentEmail").checked);
+					card.set("resume", document.getElementById("resume").checked);
+					card.set("interview", document.getElementById("interview").checked);
 					card.save().then(function() {
 						supersonic.ui.modal.hide();
 					});
@@ -67,5 +80,7 @@ angular
 				}
 			});
 		}
+
+
 
 	});

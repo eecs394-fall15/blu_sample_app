@@ -42,6 +42,9 @@ angular
 				company: document.getElementById("company").value,
 				email: document.getElementById("email").value,
 				tags: document.getElementById("tags").value,
+				sentEmail: document.getElementById('sentEmail').checked,
+				resume: document.getElementById('resume').checked,
+				interview: document.getElementById('interview').checked,
 				dataURLFront: function(){ 
 					var imageSrcFront = document.getElementById("cardImageFront").src;
 	                // Set dataURL as default.jpg if no image was set
