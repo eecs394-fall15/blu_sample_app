@@ -48,3 +48,5 @@ function ShowClear() {
 	document.getElementById("search").style.display = "none";
 	document.getElementById("clear").style.display = "block";
 }
+
+

@@ -40,5 +40,13 @@ angular
 				}
 			});
 		}
+
+		$scope.OpenEdit = function(card_id) {
+			// Open Edit
+			supersonic.ui.modal.show("card#edit?id="+card_id);
+
+		};
+
+
 		
 	});
