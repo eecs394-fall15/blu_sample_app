@@ -73,7 +73,8 @@ angular
 					card.set("resume", document.getElementById("resume").checked);
 					card.set("interview", document.getElementById("interview").checked);
 					card.save().then(function() {
-						supersonic.ui.modal.hide();
+						//supersonic.ui.modal.hide();
+						supersonic.ui.layers.pop();
 					});
 
 					
