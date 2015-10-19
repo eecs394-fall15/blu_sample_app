@@ -59,7 +59,11 @@ angular
                 searchData: document.getElementById("name").value.toLowerCase() + " "
                 			+ document.getElementById("company").value.toLowerCase() + " "
                 			+ document.getElementById("email").value.toLowerCase() + " "
-                			+ document.getElementById("tags").value.toLowerCase()
+                			+ document.getElementById("tags").value.toLowerCase() + " "
+                			+ (document.getElementById('sentEmail').checked ? "sent followup email " : "")
+                			+ (document.getElementById('applied').checked ? "applied for a position " : "")
+                			+ (document.getElementById('referred').checked ? "referred " : "")
+                			+ (document.getElementById('meeting').checked ? "set up a meeting " : "")
 			}, {
 				success: function(card) {
 					// The object was saved successfully

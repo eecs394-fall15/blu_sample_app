@@ -71,7 +71,11 @@ angular
 					card.set("searchData", document.getElementById("editName").value.toLowerCase() + " "
 											+ document.getElementById("editCompany").value.toLowerCase() + " "
 											+ document.getElementById("editEmail").value.toLowerCase() + " "
-											+ document.getElementById("editTags").value.toLowerCase());
+											+ document.getElementById("editTags").value.toLowerCase()
+											+ (document.getElementById("sentEmail").checked ? "sent followup email " : "")
+											+ (document.getElementById("applied").checked ? "applied for a position " : "")
+											+ (document.getElementById("referred").checked ? "referred " : "")
+											+ (document.getElementById("meeting").checked ? "set up a meeting " : ""));
 					card.set("sentEmail", document.getElementById("sentEmail").checked);
 					card.set("applied", document.getElementById("applied").checked);
 					card.set("referred", document.getElementById("referred").checked);
