@@ -9,8 +9,8 @@ angular
 			query.get(getURLParameter("id"), {
 				success: function(result) {
 					$scope.card = result;
-					var badges = document.getElementById("badges");
-					badges.innerHTML = "";
+					// var badges = document.getElementById("badges");
+					// badges.innerHTML = "";
 
 					if( $scope.card.get("sentEmail") ) {
 						//badges.innerHTML += ("<p>Sent Email!</p>");
@@ -53,7 +53,5 @@ angular
 			supersonic.ui.modal.show("card#edit?id="+card_id);
 
 		};
-
-
 		
 	});

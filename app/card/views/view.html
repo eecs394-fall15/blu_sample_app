@@ -1,10 +1,12 @@
 <div ng-controller="ViewController">
   <super-navbar>
     <super-navbar-title class="navbar-title">
-      <ng-bind="card.get('name')" id="TEST">
+      <ng-bind="card.get('name')">
     </super-navbar-title>
 
-    <super-navbar-button ng-click="OpenEdit(card.id)" side="right">Edit</super-navbar-button>
+    <super-navbar-button ng-click="OpenEdit(card.id)" side="right">
+    Edit
+    </super-navbar-button>
 
   </super-navbar>
 
@@ -15,25 +17,25 @@
     <p>notes: <span ng-bind="card.get('tags')"></span></p>
     
     <ul class="list card">
-      <li class="item item-checkbox" >
+      <li class="item item-checkbox" id="badgesList">
          <label class="checkbox">
            <input type="checkbox" id="sentEmail" disabled="disabled">
          </label>
          Sent Followup Email
       </li>
-      <li class="item item-checkbox" >
+      <li class="item item-checkbox" id="badgesList">
          <label class="checkbox">
            <input type="checkbox" id="applied" disabled="disabled">
          </label>
          Applied for a Position
       </li>
-      <li class="item item-checkbox" >
+      <li class="item item-checkbox" id="badgesList">
          <label class="checkbox">
            <input type="checkbox" id="referred" disabled="disabled">
          </label>
          Referred
       </li>
-      <li class="item item-checkbox" >
+      <li class="item item-checkbox" id="badgesList">
          <label class="checkbox">
            <input type="checkbox" id="meeting" disabled="disabled">
          </label>
@@ -41,7 +43,7 @@
       </li>
     </ul>
 
-    <div id="badges"></div>
+    <!-- <div id="badges"></div> -->
 
     <div class="camera">
       <img src={{card.get("dataURLFront")}}>
