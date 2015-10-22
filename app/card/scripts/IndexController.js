@@ -93,10 +93,14 @@ angular
 
 		var searchBoxIsHidden = true;
 		$scope.OnSearchClick = function() { // User clicks on the magnifying glass icon
-			searchBoxIsHidden = !searchBoxIsHidden;
-
 			// Toggle visibility
-			document.getElementById("searchBox").style.display = searchBoxIsHidden ? "none" : "block";
+			if(searchBoxIsHidden) {
+				$( "#searchBox" ).slideDown("medium");
+			}
+			else {
+				$( "#searchBox" ).slideUp("medium");
+			}
+			searchBoxIsHidden = !searchBoxIsHidden;
 
 			// Clear inputted text
 			document.getElementById("searchText").value = "";
