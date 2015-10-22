@@ -38,15 +38,4 @@ function addDays(date, days) {
 }
 
 // Used in IndexController
-function ShowSearch() {
-	document.getElementById("search").style.display = "block";
-	document.getElementById("clear").style.display = "none";
-}
-
-// Used in IndexController
-function ShowClear() {
-	document.getElementById("search").style.display = "none";
-	document.getElementById("clear").style.display = "block";
-}
-
-
+String.prototype.contains = function(it) { return this.indexOf(it) != -1; };

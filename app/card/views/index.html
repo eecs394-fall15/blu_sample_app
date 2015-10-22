@@ -21,19 +21,14 @@
   <div class="list" id="searchBox" style="display:none">
     <div class="item item-input-inset">
       <label class="item-input-wrapper">
-        <input type="text" placeholder="Search Query" id="searchText" onkeydown="ShowSearch()">
+        <input type="text" placeholder="Search Query" id="searchText" ng-keyup="Search()">
       </label>
-      <button class="button button-small button-balanced" ng-click="Search()" id="search" style="display:block">
-        Search
-      </button>
-      <button class="button button-small button-assertive" ng-click="Clear()" id="clear" style="display:none">
+      <button class="button button-small button-assertive" ng-click="Clear()" id="clear">
         Clear
       </button>
     </div>
   </div>
 
-<!--   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
-  <div ng-hide="showSpinner"> -->
     <ul class="list" id="list">
       <!-- Filled out by JavaScript in IndexController.js -->
     </ul>

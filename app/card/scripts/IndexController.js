@@ -2,13 +2,15 @@ angular
 	.module('card')
 	.controller('IndexController', function($scope, supersonic) {
 
+		$scope.allCards = undefined; // This variable will store ALL the cards, so we can now search with Angular.
+
 		var init = function() {
 			var CardsObject = Parse.Object.extend("howzitData");
 			var query = new Parse.Query(CardsObject);
 			query.descending("createdAt").find( {
 				success: function (results) { // Find all values in database and stuff into results. Results will be in descending order by creation date.
-					ShowSearch();
 					document.getElementById("searchText").value = "";
+					$scope.allCards = results; // Stuff the results in our global, for future searching.
 					GenerateList(results);
 				},
 				error: function (error) {
@@ -16,6 +18,10 @@ angular
 				}
 			});
 		};
+
+		supersonic.ui.views.current.whenVisible( function() {
+    		init();
+		});
 
 		function GenerateList(results) {
 			var list = document.createElement("ul");
@@ -87,10 +93,6 @@ angular
 			return navigate;
 		}
 
-		supersonic.ui.views.current.whenVisible( function() {
-    		init();
-		});
-
 		var searchBoxIsHidden = true;
 		$scope.OnSearchClick = function() { // User clicks on the magnifying glass icon
 			// Toggle visibility
@@ -102,43 +104,43 @@ angular
 			}
 			searchBoxIsHidden = !searchBoxIsHidden;
 
-			// Clear inputted text
-			document.getElementById("searchText").value = "";
-
-			//Resets the Search Button
-			ShowSearch();
-
-			// Refresh list of cards
-			init();
-
-
+			// Clear inputted text and refresh list of cards
+			$scope.Clear();
 		}
 
 		$scope.Search = function() {
-			// Declare an array with all the words in the text box. Declared as an array.
-			var text = document.getElementById("searchText").value;
+			// Get the text from the search box
+			var text = document.getElementById("searchText").value.toLowerCase();
 
-			var CardsObject = Parse.Object.extend("howzitData");
-
-			// ALL data (name, company, email, tags) is now previously stored in "searchData" column, in all lower case
-			var query = new Parse.Query(CardsObject);
-			query.contains("searchData", text.toLowerCase());
-
-			query.find({
-				success: function(results) {
-					GenerateList(results);
-					ShowClear();
-				},
-				error: function(error) {
-					alert("Error: " + error.code + " " + error.message);
+			var results = [];
+			for(var i = 0; i < $scope.allCards.length; i++) {
+				if(SearchMatch($scope.allCards[i], text)) {
+					results.push($scope.allCards[i]);
 				}
-			});
+			}
+
+			GenerateList(results);
+		}
+
+		function SearchMatch(card, text) {
+			// Make an array of the words typed in the search box (remove extra and trailing spaces)
+			var searchBoxWords = text.replace(/  +/, " ").replace(/ +$/, "").split(" ");
+			// Make an array of the words saved in the searchData column (remove extra and trailing spaces)
+			var databaseWords = card.get("searchData").replace(/ +$/, "").replace(/  +/, " ").split(" ");
+
+			for(var searchBoxWordNo = 0; searchBoxWordNo < searchBoxWords.length; searchBoxWordNo++) {
+				for(var databaseWordNo = 0; databaseWordNo < databaseWords.length; databaseWordNo++) {
+					if(databaseWords[databaseWordNo].contains(searchBoxWords[searchBoxWordNo])) {
+						return true;
+					}
+				}
+			}
+			return false;
 		}
 
 		$scope.Clear = function() {
-			init();
-			ShowSearch();
 			document.getElementById("searchText").value = "";
+			GenerateList($scope.allCards);
 		}
 
 	});
