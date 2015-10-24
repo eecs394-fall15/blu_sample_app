@@ -77,10 +77,13 @@
 
 .padding {
   font-family: 'Roboto';
-
 }
 
 .padding h2 {
   font-family: 'Dosis';
   font-weight: 600;
+}
+
+#new-card .button { 
+  color: #2B74B6;
 }
