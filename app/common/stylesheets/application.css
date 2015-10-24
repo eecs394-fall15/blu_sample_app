@@ -74,3 +74,13 @@
 #badgesList {
   background-color: #EEEEEE;
 }
+
+.padding {
+  font-family: 'Roboto';
+
+}
+
+.padding h2 {
+  font-family: 'Dosis';
+  font-weight: 600;
+}
