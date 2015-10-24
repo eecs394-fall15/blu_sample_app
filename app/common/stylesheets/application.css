@@ -73,6 +73,7 @@
 
 #badgesList {
   background-color: #EEEEEE;
+  color: #C0C0C0;
 }
 
 .padding {
@@ -87,3 +88,4 @@
 #new-card .button { 
   color: #2B74B6;
 }
+
