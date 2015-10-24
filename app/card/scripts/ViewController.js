@@ -9,24 +9,22 @@ angular
 			query.get(getURLParameter("id"), {
 				success: function(result) {
 					$scope.card = result;
-					// var badges = document.getElementById("badges");
-					// badges.innerHTML = "";
 
 					if( $scope.card.get("sentEmail") ) {
-						//badges.innerHTML += ("<p>Sent Email!</p>");
-						document.getElementById('sentEmail').checked = true;
+						$("#sentEmail").css("color","#0C5DA5")
+						$("#emailText").css("color","black")
 					}
 					if( $scope.card.get("applied") ) {
-						//badges.innerHTML += ("<p>Applied!</p>");
-						document.getElementById('applied').checked = true;
+						$("#applied").css("color","#66CC33")
+						$("#appliedText").css("color","black")
 					}
 					if( $scope.card.get("referred") ) {
-						//badges.innerHTML += ("<p>Referred!</p>");
-						document.getElementById('referred').checked = true;
+						$("#referred").css("color","#FFB800")
+						$("#referredText").css("color","black")
 					}
 					if( $scope.card.get("meeting") ) {
-						//badges.innerHTML += ("<p>Set up a meeting!</p>");
-						document.getElementById('meeting').checked = true;
+						$("#meeting").css("color","#8A6DE9")
+						$("#meetingText").css("color","black")
 					}
 				},
 				error: function(object, error) {

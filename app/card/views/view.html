@@ -16,7 +16,7 @@
     <p>email: <span ng-bind="card.get('email')"></span></p>
     <p>notes: <span ng-bind="card.get('tags')"></span></p>
     
-    <ul class="list card">
+    <!-- <ul class="list card">
       <li class="item item-checkbox" id="badgesList">
          <label class="checkbox">
            <input type="checkbox" id="sentEmail" style="border: 1px solid blue; border-radius: 50%;" disabled="disabled">
@@ -41,7 +41,26 @@
          </label>
          Set up a Meeting
       </li>
-    </ul>
+    </ul> -->
+
+    <div class="list card">
+      <li class="item item-icon-left" id="badgesList">
+         <i class="icon super-email" id="sentEmail"></i>
+         <span id="emailText">Sent Followup Email</span>
+      </li>
+      <li class="item item-icon-left" id="badgesList">
+         <i class="icon super-upload" id="applied"></i>
+         <span id="appliedText">Applied for a Position</span>
+      </li>
+      <li class="item item-icon-left" id="badgesList">
+         <i class="icon super-happy" id="referred"></i>
+         <span id="referredText">Referred</span>
+      </li>
+      <li class="item item-icon-left" id="badgesList">
+         <i class="icon super-android-contacts" id="meeting"></i>
+         <span id="meetingText">Set up a Meeting</span>
+      </li>
+    </div>
 
     <!-- <div id="badges"></div> -->
 
