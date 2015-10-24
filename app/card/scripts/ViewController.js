@@ -11,7 +11,7 @@ angular
 					$scope.card = result;
 
 					if( $scope.card.get("sentEmail") ) {
-						$("#sentEmail").css("color","#0C5DA5")
+						$("#sentEmail").css("color","#4987EE")
 						$("#emailText").css("color","black")
 					}
 					if( $scope.card.get("applied") ) {
