@@ -42,7 +42,8 @@ angular
 					lastDate = date; // ...and update the previously stored date variable
 				}
 				// Append row as list element
-				list.appendChild(CreateListElement(results[i].id, results[i].get("name"), results[i].get("company"), results[i].get("email"), results[i].get("dataURLFront")));
+				list.appendChild(CreateListElement(results[i].id, results[i].get("name"), results[i].get("company"), results[i].get("email"), results[i].get("dataURLFront"),
+													[results[i].get("sentEmail"), results[i].get("applied"), results[i].get("referred"), results[i].get("meeting")]));
 			}
 			// Once it's done, overwrite the page's contents.
 			// Note how this is done at the end, to avoid getting a blank screen while the data loads.
@@ -59,13 +60,24 @@ angular
 			return header;
 		}
 
-		// <a class="item item-thumbnail-left" href="#" id="Sample ObjectId">
-		//	<img src="#">
-		//	<h2>Sample Name</h2>
-		//	<p>Sample Company</p>
-		//	<p>Sample Email</p>
-		// </a>
-		var CreateListElement = function(objectId, name, company, email, dataURLFront) {
+		// <super-navigate location="card#view?id=ID">
+		//  <div class="item item-thumbnail-left">
+		//    <img src="/images/DATAURLFRONT">
+		//    <span class="item-note">
+		//      <i class="super-email" id="sentEmail"></i>
+		//      <br />
+		//      <i class="super-upload" id="applied"></i>
+		//      <br />
+		//      <i class="super-happy" id="referred"></i>
+		//      <br />
+		//      <i class="super-android-contacts" id="meeting"></i>
+		//    </span>
+		//    <h2>NAME</h2>
+		//    <p>COMPANY</p>
+		//    <p>EMAIL</p>
+		//  </div>
+		// </super-navigate>
+		var CreateListElement = function(objectId, name, company, email, dataURLFront, badges) { // badges is an array of 4 bools
 			var navigate = document.createElement("super-navigate");
 			navigate.setAttribute("location", "card#view?id=" + objectId);
 
@@ -74,6 +86,32 @@ angular
 
 			var image = document.createElement("img");
 			image.src = dataURLFront || "/images/default.jpg";
+
+			var iconSpan = document.createElement("span");
+			iconSpan.setAttribute("class", "item-note");
+			var emailIcon = document.createElement("i");
+			var appliedIcon = document.createElement("i");
+			var referredIcon = document.createElement("i");
+			var meetingIcon = document.createElement("i");
+			emailIcon.setAttribute("class", "super-email");
+			appliedIcon.setAttribute("class", "super-upload");
+			referredIcon.setAttribute("class", "super-happy");
+			meetingIcon.setAttribute("class", "super-android-contacts");
+			emailIcon.id = "sentEmail";
+			appliedIcon.id = "applied";
+			referredIcon.id = "referred";
+			meetingIcon.id = "meeting";
+			emailIcon.style.color = badges[0] ? "#4987EE" : "#EEEEEE"; // blue or gray
+			appliedIcon.style.color = badges[1] ? "#66CC33" : "#EEEEEE"; // green or gray
+			referredIcon.style.color = badges[2] ? "#FFB800" : "#EEEEEE"; // yellow or gray
+			meetingIcon.style.color = badges[3] ? "#8A6DE9" : "#EEEEEE"; // purple or gray
+			iconSpan.appendChild(emailIcon);
+			iconSpan.appendChild(document.createElement("br"));
+			iconSpan.appendChild(appliedIcon);
+			iconSpan.appendChild(document.createElement("br"));
+			iconSpan.appendChild(referredIcon);
+			iconSpan.appendChild(document.createElement("br"));
+			iconSpan.appendChild(meetingIcon);
 
 			var h2Name = document.createElement("h2");
 			h2Name.innerHTML = name;
@@ -85,6 +123,7 @@ angular
 			pEmail.innerHTML = email || "";
 
 			listElement.appendChild(image);
+			listElement.appendChild(iconSpan);
 			listElement.appendChild(h2Name);
 			listElement.appendChild(pName);
 			listElement.appendChild(pEmail);
